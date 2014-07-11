@@ -74,6 +74,7 @@ Or install it yourself as:
 
 * Improve render method, allow yield etc
 * Improve error handling, honor production/development environment?
+* Tests? ;)
 * Auto reload?
 * Anything cool that doesn't break the design principles ...
 
