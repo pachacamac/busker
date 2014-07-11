@@ -7,7 +7,7 @@ module Busker
   class Busker
     def initialize(opts={}, &block)
       @_ = {:routes => {}}
-      (block.arity < 1 ? instance_eval(&block) : block.call(self)) if block_given?
+      instance_eval(&block) if block_given?
       opts[:Port] ||= opts.delete(:port) || 8080
       opts[:DocumentRoot] ||= opts.delete(:document_root) || File.expand_path('./')
       @_[:server] = WEBrick::HTTPServer.new(opts)
@@ -16,6 +16,7 @@ module Busker
           rs.status, rs.content_type, method = nil, 'text/html', rq.request_method.tr('-', '_').upcase
           route, handler = @_[:routes].find{|k,v| k.first.include?(method) && k.last.match(rq.path_info)}
           params = Hash[ CGI::parse(rq.query_string||'').map{|k,v| [k.to_sym,v[0]]} + #url params
+                         rq.query.map{|k,v| [k.to_sym, v]} + #query params
                          ($~ ? $~.names.map(&:to_sym).zip($~.captures) : []) ] #dynamic route params
           rs.status, rs.body = route ? [rs.status || 200, handler[:block].call(params, rq, rs)] : [404, 'not found']
         rescue => e
