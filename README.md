@@ -62,7 +62,7 @@ Or install it yourself as:
 
 ## Design principles
 
-* Small code base that is easy to understandable and hackable
+* Small code base that is easily to understandable and hackable
 * Such a tiny code base that you can just copy it into your one-file-project without the need to require a Gem
 * No dependencies except what is in the Ruby Standard Lib
 * Backward compatibility to older Ruby versions
@@ -74,6 +74,7 @@ Or install it yourself as:
 
 * Improve render method, allow yield etc
 * Improve error handling, honor production/development environment?
+* Tests? ;)
 * Auto reload?
 * Anything cool that doesn't break the design principles ...
 
