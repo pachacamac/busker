@@ -28,48 +28,50 @@ Or install it yourself as:
 
 ## Usage
 
-    require 'busker'
+```ruby
+require 'busker'
 
-    Busker::Busker.new do
-    
-      # minimal route definition
-      route '/' do
-        "Busker version: #{Busker::VERSION}"
-      end
+Busker::Busker.new do
 
-      # respond to multiple HTTP methods, overwrite response content_type
-      route '/info', [:GET, :POST, :PUT, :DELETE] do |params, request, response|
-        response.content_type = 'text/plain'
-        request.inspect
-      end
+  # minimal route definition
+  route '/' do
+    "Busker version: #{Busker::VERSION}"
+  end
 
-      # usage of URL params, render template with variable
-      route '/template', :GET do |params|
-        @title = params[:title] || 'no title'
-        if params[:external]
-          render './template.erb'
-        else
-          render :template
-        end
-      end
+  # respond to multiple HTTP methods, overwrite response content_type
+  route '/info', [:GET, :POST, :PUT, :DELETE] do |params, request, response|
+    response.content_type = 'text/plain'
+    request.inspect
+  end
 
-      # usage of dynamic route params
-      route '/item/:id' do |params|
-        "requested item with id: #{params[:id]}"
-      end
+  # usage of URL params, render template with variable
+  route '/template', :GET do |params|
+    @title = params[:title] || 'no title'
+    if params[:external]
+      render './template.erb'
+    else
+      render :template
+    end
+  end
 
-      # list all defined routes
-      route '/routes' do |params, request, response|
-        response.content_type = 'text/plain'
-        @_[:routes].keys.map{|e| e.join("\n")}.join("\n\n")
-      end
-      
-    end.start # notice the call to start
+  # usage of dynamic route params
+  route '/item/:id' do |params|
+    "requested item with id: #{params[:id]}"
+  end
 
-    # inline templates like in Sinatra
-    __END__
-    @@ template
-    <h1><%= @title %></h1>
+  # list all defined routes
+  route '/routes' do |params, request, response|
+    response.content_type = 'text/plain'
+    @_[:routes].keys.map{|e| e.join("\n")}.join("\n\n")
+  end
+  
+end.start # notice the call to start
+
+# inline templates like in Sinatra
+__END__
+@@ template
+<h1><%= @title %></h1>
+```
 
 ## Questions
 
