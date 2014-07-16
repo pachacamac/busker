@@ -71,6 +71,18 @@ Or install it yourself as:
     @@ template
     <h1><%= @title %></h1>
 
+## Questions
+
+### Why not use Sinatra
+
+Sinatra is about 2000 lines of code (nothing you would directly, as in copy the code, embed in your single-file project) while Busker is less than 50 lines of code. Plus Sinatra depends on Rack and Tilt. Both external Gems while one of Buskers design principles is to only rely on modules that are within the Ruby Standard Library.
+
+This makes it literally small and deployable enough to be used in a tiny single file project. This is great for toy projects, educational purposes, payloads, embedded projects ...
+
+### When shouldn't I use Busker
+
+I wouldn't consider Busker to be "production ready" by any means. It's something to play around and have fun with. I haven't made exhaustive benchmarks or in depths security checks. And I would love to get honest, constructive opinions (considering the design principles). 
+
 ## TODO / Ideas
 
 * Improve render method, allow yield etc
