@@ -4,6 +4,14 @@ An extremely simple web framework. It's called Busker as a reference to
 Sinatra. It mimics Sinatra in some aspects while still trying to stay a
 true wanderer of the streets.
 
+## Design principles
+
+* Small code base that is easily understandable, hackable and embeddable
+* No dependencies except what is in the Ruby Standard Lib
+* Backward compatibility to older Ruby versions
+* Ease of use / Some minor resemblance to Sinatra, hence the name
+* It's not meant as a complete web framework but concentrates on the basics
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -59,16 +67,6 @@ Or install it yourself as:
     __END__
     @@ template
     <h1><%= @title %></h1>
-
-## Design principles
-
-* Small code base that is easily to understandable and hackable
-* Such a tiny code base that you can just copy it into your one-file-project without the need to require a Gem
-* No dependencies except what is in the Ruby Standard Lib
-* Backward compatibility to older Ruby versions
-* Some minor resemblance to Sinatra
-* Ease of use
-* It's not meant as a complete web framework like Rails but concentrates on the basics
 
 ## TODO / Ideas
 
