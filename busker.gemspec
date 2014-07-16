@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["pachacamac@users.noreply.github.com"]
   spec.summary       = %q{An extremely simple web framework}
   spec.description   = %q{An extremely simple web framework. It mimics Sinatra in some aspects while still trying to stay a true wanderer of the streets.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/pachacamac/busker"
   spec.license       = "MIT"
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
