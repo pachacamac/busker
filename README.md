@@ -31,6 +31,7 @@ Or install it yourself as:
     require 'busker'
 
     Busker::Busker.new do
+    
       # minimal route definition
       route '/' do
         "Busker version: #{Busker::VERSION}"
@@ -62,8 +63,10 @@ Or install it yourself as:
         response.content_type = 'text/plain'
         @_[:routes].keys.map{|e| e.join("\n")}.join("\n\n")
       end
-    end.start
+      
+    end.start # notice the call to start
 
+    # inline templates like in Sinatra
     __END__
     @@ template
     <h1><%= @title %></h1>
