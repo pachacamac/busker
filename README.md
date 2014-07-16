@@ -89,7 +89,7 @@ I wouldn't consider Busker to be "production ready" by any means. It's something
 
 * Improve render method, allow yield etc
 * Improve error handling, honor production/development environment?
-* Tests? ;)
+* Tests? :ok_hand:
 * Auto reload?
 * Anything cool that doesn't break the design principles ...
 
