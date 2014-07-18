@@ -34,7 +34,7 @@ module Busker
 
     def render(name)
       @_[:templates] ||= (Hash[DATA.read.split(/^@@\s*(.*\S)\s*$/)[1..-1].map(&:strip).each_slice(2).to_a] rescue {})
-      ERB.new(@_[:templates][name.to_s] || File.read(name)).result(binding)
+      ERB.new(@_[:templates][name.to_s] || File.read(name.to_s)).result(binding)
     end
 
     def start
