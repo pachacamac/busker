@@ -6,7 +6,7 @@ require 'erb'
 module Busker
   class Busker
     def initialize(opts={}, &block)
-      @_ = {:routes => {}}
+      @_ = {:routes => {}} #using @_ to store instance variables so they're less likely to get overwritten unintentionally while still allowing easy access when needed
       instance_eval(&block) if block_given?
       opts[:Port] ||= opts.delete(:port) || 8080
       opts[:DocumentRoot] ||= opts.delete(:document_root) || File.expand_path('./')
