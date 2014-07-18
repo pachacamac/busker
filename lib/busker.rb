@@ -17,7 +17,7 @@ module Busker
           route, handler = @_[:routes].find{|k,v| k.first.include?(method) && k.last.match(rq.path_info)}
           params = Hash[ CGI::parse(rq.query_string||'').map{|k,v| [k.to_sym,v[0]]} + #url params
                          rq.query.map{|k,v| [k.to_sym, v]} + #query params
-                         ($~ ? $~.names.map(&:to_sym).zip($~.captures) : []) ] #dynamic route params
+                         ($~ ? $~.names.map(&:to_sym).zip($~.captures) : []) ] #dynamic route params. $~ is the info of the last match (see line 17)
           rs.status, rs.body = route ? [rs.status || 200, handler[:block].call(params, rq, rs)] : [404, 'not found']
         rescue => e
           @_[:server].logger.error "#{e.message}\n#{e.backtrace.map{|line| "\t#{line}"}.join("\n")}"
