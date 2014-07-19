@@ -59,18 +59,24 @@ Busker::Busker.new do
     "requested item with id: #{params[:id]}"
   end
 
+  # route without a block renders a template of the same name
+  route '/simple_route'
+
   # list all defined routes
   route '/routes' do |params, request, response|
     response.content_type = 'text/plain'
     @_[:routes].keys.map{|e| e.join("\n")}.join("\n\n")
   end
-  
+
 end.start # notice the call to start
 
 # inline templates like in Sinatra
 __END__
 @@ template
 <h1><%= @title %></h1>
+
+@@ /simple_route
+<h1>Invoked by the simple route</h1>
 ```
 
 ## Questions
