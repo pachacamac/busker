@@ -38,6 +38,7 @@ module Busker
     end
 
     def start
+      trap('INT') { @_[:server].stop }
       @_[:server].start ensure @_[:server].shutdown
     end
   end
