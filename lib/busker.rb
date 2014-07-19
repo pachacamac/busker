@@ -30,7 +30,7 @@ module Busker
       path = "/#{path}" unless path[0] == '/'
       methods = Array(methods).map{|e| e.to_s.tr('-', '_').upcase}
       matcher = Regexp.new("\\A#{path.gsub(/(:\w+)/){|m| "(?<#{$1[1..-1]}>\\w+)"}}\\Z")
-      block ||= proc{|pa,rq,rx| @params,@request,@response = pa,rq,rx; render path}
+      block ||= proc{|pa,rq,rs| @params,@request,@response = pa,rq,rs; render path}
       @_[:routes][[methods, path, matcher]] = {:opts => opts, :block => block}
     end
 
@@ -40,7 +40,7 @@ module Busker
     end
 
     def start
-      trap('INT') { @_[:server].stop }
+      trap('INT'){@_[:server].stop}
       @_[:server].start ensure @_[:server].shutdown
     end
   end
