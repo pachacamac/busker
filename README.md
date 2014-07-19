@@ -1,4 +1,4 @@
-# Busker
+# Busker :walking::notes:
 
 An extremely simple web framework. It's called Busker as a reference to
 Sinatra. It mimics Sinatra in some aspects while still trying to stay a
