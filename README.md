@@ -33,6 +33,10 @@ require 'busker'
 
 Busker::Busker.new do
 
+  # implicit route definitions
+  route :implicit
+  route '/implicit/something'
+
   # minimal route definition
   route '/' do
     "Busker version: #{Busker::VERSION}"
@@ -71,6 +75,13 @@ end.start # notice the call to start
 __END__
 @@ template
 <h1><%= @title %></h1>
+
+@@ /implicit
+<h1><%= @params.inspect %></h1>
+
+@@ /implicit/something
+<h1><%= @request.inspect %></h1>
+
 ```
 
 ## Questions
