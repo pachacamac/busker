@@ -33,10 +33,6 @@ require 'busker'
 
 Busker::Busker.new do
 
-  # implicit route definitions
-  route :implicit
-  route '/implicit/something'
-
   # minimal route definition
   route '/' do
     "Busker version: #{Busker::VERSION}"
@@ -68,7 +64,11 @@ Busker::Busker.new do
     response.content_type = 'text/plain'
     @_[:routes].keys.map{|e| e.join("\n")}.join("\n\n")
   end
-  
+
+  # implicit route definitions
+  route :implicit
+  route '/implicit/something'
+
 end.start # notice the call to start
 
 # inline templates like in Sinatra
