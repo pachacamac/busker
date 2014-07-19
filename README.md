@@ -86,7 +86,7 @@ __END__
 
 ```
 
-## Questions :question:
+## Questions :grey_question:
 
 ### Why not use Sinatra?
 
