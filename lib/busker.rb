@@ -27,8 +27,10 @@ module Busker
     end
 
     def route(path, methods = ['GET'], opts={}, &block)
+      path = "/#{path}" unless path[0] == '/'
       methods = Array(methods).map{|e| e.to_s.tr('-', '_').upcase}
       matcher = Regexp.new("\\A#{path.gsub(/(:\w+)/){|m| "(?<#{$1[1..-1]}>\\w+)"}}\\Z")
+      block ||= proc{|pa,rq,rx| @params,@request,@response = pa,rq,rx; render path}
       @_[:routes][[methods, path, matcher]] = {:opts => opts, :block => block}
     end
 
