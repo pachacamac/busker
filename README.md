@@ -4,7 +4,7 @@ An extremely simple web framework. It's called Busker as a reference to
 Sinatra. It mimics Sinatra in some aspects while still trying to stay a
 true wanderer of the streets.
 
-## Design principles
+## Design principles :page_with_curl:
 
 * Small code base that is easily understandable, hackable and embeddable
 * No dependencies except what is in the Ruby Standard Lib
@@ -12,7 +12,7 @@ true wanderer of the streets.
 * Ease of use / Some minor resemblance to Sinatra, hence the name
 * It's not meant as a complete web framework but concentrates on the basics
 
-## Installation
+## Installation :floppy_disk:
 
 Add this line to your application's Gemfile:
 
@@ -26,7 +26,9 @@ Or install it yourself as:
 
     $ gem install busker
 
-## Usage
+Or copy the code into your project ... it's tiny!
+
+## Usage :boom:
 
 ```ruby
 require 'busker'
@@ -84,7 +86,7 @@ __END__
 
 ```
 
-## Questions
+## Questions :question:
 
 ### Why not use Sinatra?
 
@@ -98,7 +100,7 @@ But that all being said, you should probably use Rails or Sinatra for your proje
 
 I wouldn't consider Busker to be "production ready" by any means. It's something to play around and have fun with. I haven't made exhaustive benchmarks or in depths security checks. And I would love to get honest, constructive opinions (considering the design principles). 
 
-## TODO / Ideas
+## TODO / Ideas :bulb:
 
 * Improve render method, allow yield etc
 * Improve error handling, honor production/development environment?
@@ -106,7 +108,7 @@ I wouldn't consider Busker to be "production ready" by any means. It's something
 * Auto reload?
 * Anything cool that doesn't break the design principles ...
 
-## Contributing
+## Contributing :construction:
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
