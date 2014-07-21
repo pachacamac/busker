@@ -98,7 +98,7 @@ But that all being said, you should probably use Rails or Sinatra for your proje
 
 ### When shouldn't I use Busker?
 
-I wouldn't consider Busker to be "production ready" by any means. It's something to play around and have fun with. I haven't made exhaustive benchmarks or in depths security checks. And I would love to get honest, constructive opinions (considering the design principles). 
+**I wouldn't consider Busker to be "production ready" by any means. (WEBrick is not the smartest choice for production environments! [Read here why](http://www.madebymarket.com/blog/dev/ruby-web-benchmark-report.html))** It's something to play around and have fun with. I haven't made exhaustive benchmarks or in depths security checks. And I would love to get honest, constructive opinions (considering the design principles). 
 
 ## TODO / Ideas :bulb:
 
@@ -106,6 +106,7 @@ I wouldn't consider Busker to be "production ready" by any means. It's something
 * Improve error handling, honor production/development environment?
 * Tests? :ok_hand:
 * Auto reload?
+* A fork that doesn't need WEBrick?
 * Anything cool that doesn't break the design principles ...
 
 ## Contributing :construction:
