@@ -14,7 +14,7 @@ module Busker
       @_[:server].mount_proc '' do |rq, rs| #request, response
         begin
           rs.status, rs.content_type, method = nil, 'text/html', rq.request_method.tr('-', '_').upcase
-          route, handler = @_[:routes].find{|k,v| k.first.include?(method) && k.last.match(rq.path_info)}
+          route, handler = @_[:routes].find{|k,v| k[:methods].include?(method) && k[:matcher].match(rq.path_info)}
           params = Hash[ CGI::parse(rq.query_string||'').map{|k,v| [k.to_sym,v[0]]} + #url params
                          rq.query.map{|k,v| [k.to_sym, v]} + #query params
                          ($~ ? $~.names.map(&:to_sym).zip($~.captures) : []) ] #dynamic route params. $~ is the info of the last match (see line 17)
@@ -31,7 +31,7 @@ module Busker
       methods = Array(methods).map{|e| e.to_s.tr('-', '_').upcase}
       matcher = Regexp.new("\\A#{path.gsub(/(:\w+)/){|m| "(?<#{$1[1..-1]}>\\w+)"}}\\Z")
       block ||= proc{|pa,rq,rs| @params,@request,@response = pa,rq,rs; render path}
-      @_[:routes][[methods, path, matcher]] = {:opts => opts, :block => block}
+      @_[:routes][{:methods => methods, :path => path, :matcher => matcher}] = {:opts => opts, :block => block}
     end
 
     def render(name)

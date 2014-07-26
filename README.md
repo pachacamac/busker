@@ -62,9 +62,9 @@ Busker::Busker.new do
   end
 
   # list all defined routes
-  route '/routes' do |params, request, response|
+  route '/routes', :GET do |params, request, response|
     response.content_type = 'text/plain'
-    @_[:routes].keys.map{|e| e.join("\n")}.join("\n\n")
+    @_[:routes].keys.map{|k| "#{k[:methods].join('/')} #{k[:path]}"}.join("\n")
   end
 
   # implicit route definitions
@@ -98,13 +98,13 @@ But that all being said, you should probably use Rails or Sinatra for your proje
 
 ### When shouldn't I use Busker?
 
-**I wouldn't consider Busker to be "production ready" by any means. (WEBrick is not the smartest choice for production environments! [Read here why](http://www.madebymarket.com/blog/dev/ruby-web-benchmark-report.html))** It's something to play around and have fun with. I haven't made exhaustive benchmarks or in depths security checks. And I would love to get honest, constructive opinions (considering the design principles). 
+**I wouldn't consider Busker to be "production ready" by any means. (WEBrick is not the smartest choice for production environments! [Read here why](http://www.madebymarket.com/blog/dev/ruby-web-benchmark-report.html))** It's something to play around and have fun with. I haven't made exhaustive benchmarks or in depths security checks. And I would love to get honest, constructive opinions (considering the design principles).
 
 ## TODO / Ideas :bulb:
 
+* More tests! (especially integration tests with Capybara)
 * Improve render method, allow yield etc
 * Improve error handling, honor production/development environment?
-* Tests? :ok_hand:
 * Auto reload?
 * A fork that doesn't need WEBrick?
 * Anything cool that doesn't break the design principles ...
@@ -114,8 +114,9 @@ But that all being said, you should probably use Rails or Sinatra for your proje
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+4. Don't forget to write- and run tests for your new feature (run rspec)!
+5. Push to the branch (`git push origin my-new-feature`)
+6. Create a new Pull Request
 
 Or just use GitHubs on page editing ...
 it will do all of the above for you and is reasonable given the size of the source.
