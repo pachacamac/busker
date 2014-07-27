@@ -1,10 +1,10 @@
-[![Gem Version](https://badge.fury.io/rb/busker.svg)](http://badge.fury.io/rb/busker)
-
 # Busker :walking::notes:
 
 An extremely simple web framework. It's called Busker as a reference to
 Sinatra. It mimics Sinatra in some aspects while still trying to stay a
 true wanderer of the streets.
+
+[![Gem Version](https://badge.fury.io/rb/busker.svg)](http://badge.fury.io/rb/busker)
 
 ## Design principles :page_with_curl:
 
