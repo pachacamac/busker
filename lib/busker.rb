@@ -9,11 +9,12 @@ module Busker
       @_ = {:routes => {}} #using @_ to store instance variables so they're less likely to get overwritten unintentionally while still allowing easy access when needed
       instance_eval(&block) if block_given?
       opts[:Port] ||= opts.delete(:port) || 8080
+      opts[:content_type] ||= opts.delete(:content_type) || 'text/html'
       opts[:DocumentRoot] ||= opts.delete(:document_root) || File.expand_path('./')
       @_[:server] = WEBrick::HTTPServer.new(opts)
       @_[:server].mount_proc '' do |rq, rs| #request, response
         begin
-          rs.status, rs.content_type, method = nil, 'text/html', rq.request_method.tr('-', '_').upcase
+          rs.status, rs.content_type, method = nil, opts[:content_type], rq.request_method.tr('-', '_').upcase
           route, handler = @_[:routes].find{|k,v| k[:methods].include?(method) && k[:matcher].match(rq.path_info)}
           params = Hash[ CGI::parse(rq.query_string||'').map{|k,v| [k.to_sym,v[0]]} + #url params
                          rq.query.map{|k,v| [k.to_sym, v]} + #query params
