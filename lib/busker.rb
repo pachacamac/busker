@@ -35,9 +35,15 @@ module Busker
       @_[:routes][{:methods => methods, :path => path, :matcher => matcher}] = {:opts => opts, :block => block}
     end
 
-    def render(name)
+    def render(name, opts={})
       @_[:templates] ||= (Hash[DATA.read.split(/^@@\s*(.*\S)\s*$/)[1..-1].map(&:strip).each_slice(2).to_a] rescue {})
-      ERB.new(@_[:templates][name.to_s] || File.read(name.to_s)).result(binding)
+      [@_[:templates][name.to_s] || File.read(name.to_s), #template to render
+       @_[:templates][(opts.has_key?(:layout) ? opts[:layout] : 'layout').to_s] #layout to use, if any
+      ].compact.reduce(nil){|prev, temp| _render(temp){prev}}
+    end
+
+    def _render(content)
+      ERB.new(content).result(binding)
     end
 
     def start
