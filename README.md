@@ -41,7 +41,7 @@ Busker::Busker.new do
   route '/' do
     "Busker version: #{Busker::VERSION}"
   end
-
+  
   # respond to multiple HTTP methods, overwrite response content_type
   route '/info', [:GET, :POST, :PUT, :DELETE] do |params, request, response|
     response.content_type = 'text/plain'
@@ -57,7 +57,12 @@ Busker::Busker.new do
       render :template
     end
   end
-
+  
+  # render another layout than the default
+  route '/alt_layout', :GET do |params|
+    render :template, :layout => :another_layout
+  end
+  
   # usage of dynamic route params
   route '/item/:id' do |params|
     "requested item with id: #{params[:id]}"
@@ -77,6 +82,14 @@ end.start # notice the call to start
 
 # inline templates like in Sinatra
 __END__
+@@ layout
+<header>Header</header>
+<%= yield %>
+<footer>Footer</footer>
+
+@@ another_layout
+<div class="batman"><%= yield %></div>
+
 @@ template
 <h1><%= @title %></h1>
 
