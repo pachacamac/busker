@@ -4,6 +4,8 @@ An extremely simple web framework. It's called Busker as a reference to
 Sinatra. It mimics Sinatra in some aspects while still trying to stay a
 true wanderer of the streets.
 
+Featured in the German [Linux Magazin](http://www.linux-magazin.de/Ausgaben/2014/10/Einfuehrung3) for some reason O.o
+
 [![Gem Version](https://badge.fury.io/rb/busker.svg)](http://badge.fury.io/rb/busker) ![Installs](http://img.shields.io/gem/dt/busker.svg) [![security](https://hakiri.io/github/pachacamac/busker/master.svg)](https://hakiri.io/github/pachacamac/busker/master)
 
 ## Design principles :page_with_curl:
