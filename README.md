@@ -117,6 +117,10 @@ But that all being said, you should probably use Rails or Sinatra for your proje
 
 **I wouldn't consider Busker to be "production ready" by any means. (WEBrick is not the smartest choice for production environments! [Read here why](http://www.madebymarket.com/blog/dev/ruby-web-benchmark-report.html))** It's something to play around and have fun with. I haven't made exhaustive benchmarks or in depths security checks. And I would love to get honest, constructive opinions (considering the design principles).
 
+### When should I use Busker?
+
+You find yourself hacking a tiny dirty little web app on your Raspberry Pi and getting annoyed by using only Webrick but not annoyed enough to setup a good Ruby environment and install Sinatra. Or you might have a weird fascination for single file projects that just run with minimal effort. Busker is your best buddy now. Lots of convenience and syntactic sugar for almost no cost.
+
 ## TODO / Ideas :bulb:
 
 * More tests! (especially integration tests with Capybara)
