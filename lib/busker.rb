@@ -28,7 +28,7 @@ module Busker
       end
     end
 
-    def route(path, methods = ['GET'], opts={}, &block)
+    def route(path, methods = ['GET', 'POST'], opts={}, &block)
       path = "/#{path}" unless path[0] == '/'
       methods = Array(methods).map{|e| e.to_s.tr('-', '_').upcase}
       matcher = Regexp.new("\\A#{path.gsub(/(:\w+)/){|m| "(?<#{$1[1..-1]}>\\w+)"}}\\Z")
