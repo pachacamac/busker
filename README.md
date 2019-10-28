@@ -115,7 +115,7 @@ But that all being said, you should probably use Rails or Sinatra for your proje
 
 ### When shouldn't I use Busker?
 
-**I wouldn't consider Busker to be "production ready" by any means. (WEBrick is not the smartest choice for production environments! [Read here why](http://www.madebymarket.com/blog/dev/ruby-web-benchmark-report.html))** It's something to play around and have fun with. I haven't made exhaustive benchmarks or in depths security checks. And I would love to get honest, constructive opinions (considering the design principles).
+**I wouldn't consider Busker to be "production ready" by any means. (WEBrick is not the smartest choice for production environments!)** It's something to play around and have fun with. I haven't made exhaustive benchmarks or in depths security checks. And I would love to get honest, constructive opinions (considering the design principles).
 
 ### When should I use Busker?
 
